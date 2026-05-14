@@ -1,81 +1,81 @@
-injury_id,athlete_id,injury_type,severity,date_occured,recovery_status,notes
-1,90,Knee Sprain,Severe,2024-10-02,Recovering,Thus old special quickly really inside third probably performance reach cultural edge former far relationship issue.
-2,2,Lower Back Pain,Moderate,2024-08-19,Cleared,His deal toward seek understand ahead fill international shoulder rather.
-3,57,Muscle Fatigue,Mild,2022-04-16,Under Treatment,Bank business modern great care evening history.
-4,62,ACL Tear,Mild,2024-03-31,Cleared,Travel feeling end coach play quality friend fact shake and early base else how couple green.
-5,10,Lower Back Pain,Severe,2022-04-20,Recovered,Form threat carry again expert word measure look century.
-6,20,Lower Back Pain,Moderate,2022-06-24,Recovered,Point attack sense begin change fast never sense call.
-7,16,Groin Strain,Moderate,2023-04-08,Cleared,Unit what better cover wish those medical drop ability.
-8,58,Concussion,Moderate,2024-05-28,Under Treatment,Make worker watch maybe rise Congress skin set owner never safe like cold investment.
-9,73,Lower Back Pain,Mild,2022-07-23,Recovered,Whatever hot practice according deal push turn agent dinner spring gas wear imagine.
-10,81,Ankle Sprain,Moderate,2022-06-16,Recovered,Director tell effort game computer assume station tell mind either management hand us paper leave.
-11,31,Knee Sprain,Severe,2022-06-03,Recovered,Loss very head owner minute man course window left close special worry could chance them.
-12,1,Shin Splints,Moderate,2024-08-20,Under Treatment,Relate be raise stop become away seat sister.
-13,5,Ankle Sprain,Moderate,2023-08-03,Cleared,Minute tend long entire someone best positive land never thought result remain challenge season how receive.
-14,10,Ankle Sprain,Moderate,2023-02-10,Cleared,Kid mouth morning arm foreign election serve institution thought.
-15,15,Groin Strain,Mild,2022-11-02,Under Treatment,So world their read lot summer quality want.
-16,19,ACL Tear,Mild,2022-12-06,Under Treatment,Pass remember again land evening security value board sit high bed world travel door table.
-17,77,Lower Back Pain,Moderate,2024-06-18,Recovering,Action action thing pull nice human several garden spring.
-18,60,Shoulder Dislocation,Severe,2024-04-04,Under Treatment,Purpose decade hot through moment upon difference no better get hold ready upon so must table.
-19,65,Groin Strain,Moderate,2024-06-15,Recovering,Newspaper without green your high discover first beautiful prevent point.
-20,77,Hamstring Strain,Moderate,2023-10-23,Under Treatment,National thing leg age choose recent reduce player key present player leg allow sign.
-21,4,ACL Tear,Mild,2022-02-12,Under Treatment,Through security suffer way opportunity herself writer least.
-22,74,Hamstring Strain,Mild,2024-08-21,Cleared,Company mind collection above short huge arrive real reality government four hour run.
-23,36,Knee Sprain,Severe,2024-06-11,Cleared,Foot water economy set night college most life agency low accept.
-24,12,Concussion,Moderate,2024-04-16,Under Treatment,Only main course family defense light hard color land high season purpose old suddenly arrive.
-25,42,ACL Tear,Mild,2023-11-07,Cleared,World high court color dinner mean none small situation whether.
-26,89,Concussion,Moderate,2024-03-31,Recovering,Arm him responsibility former stock close resource seek discover marriage including billion.
-27,59,ACL Tear,Moderate,2023-06-01,Under Treatment,Power trade admit threat box fly under or.
-28,15,Shin Splints,Severe,2022-01-03,Cleared,Smile treatment seven might consider save tell someone between lawyer campaign thus yeah class lose whatever.
-29,53,Hamstring Strain,Mild,2024-11-27,Under Treatment,Hold until ready anyone house some baby sing professional take somebody hour.
-30,80,Concussion,Severe,2024-06-24,Recovering,Once risk chair spring until performance artist dinner interest pay professional contain.
-31,27,Shoulder Dislocation,Severe,2022-09-26,Under Treatment,Every everyone big store gas story despite onto close ready suggest free.
-32,57,Concussion,Mild,2022-03-01,Recovered,Minute style since institution from order morning fly quality rather dream.
-33,91,Knee Sprain,Moderate,2022-01-29,Cleared,Interview here rest election involve year indicate early no consider action leave sound though development.
-34,12,Ankle Sprain,Mild,2024-08-03,Recovering,Speech check wind young government present away can together memory her it argue two.
-35,83,Knee Sprain,Moderate,2023-08-21,Under Treatment,Community course use reach travel price radio say start.
-36,54,Concussion,Moderate,2023-05-15,Cleared,Stand another religious relationship worker from detail really tend parent physical this.
-37,71,Knee Sprain,Moderate,2023-01-26,Recovered,Image reach material relationship beyond people determine energy.
-38,9,Shoulder Dislocation,Moderate,2023-11-28,Under Treatment,Baby maybe couple party meet draw machine suffer first network support child.
-39,1,Shoulder Dislocation,Severe,2023-09-04,Cleared,Town apply yourself various if language animal former oil.
-40,20,Concussion,Severe,2024-09-18,Under Treatment,Seem left arrive middle sing reach heavy leg concern policy.
-41,43,Groin Strain,Severe,2024-02-12,Cleared,Include type American certainly glass stop country head nature model.
-42,42,Ankle Sprain,Severe,2023-05-05,Cleared,After pick build far can figure pressure.
-43,30,Shin Splints,Mild,2023-10-14,Cleared,Structure character also lawyer continue short attorney poor account avoid brother board support day.
-44,91,Shin Splints,Moderate,2022-11-08,Cleared,Parent institution produce boy whose business bill his free piece his leave history answer remain once.
-45,5,Knee Sprain,Severe,2023-11-11,Recovering,Them hold if year million thousand and believe it heavy evidence each.
-46,57,ACL Tear,Severe,2024-07-24,Recovering,Instead customer board glass think push available line hold community couple condition level entire.
-47,93,Knee Sprain,Moderate,2022-11-13,Recovering,Early economy security bank old attention check not career.
-48,61,Shoulder Dislocation,Moderate,2024-03-25,Recovering,Time report interesting hospital option pull despite season position opportunity small evidence foreign lot if.
-49,43,Groin Strain,Moderate,2023-10-11,Cleared,Raise dinner stage draw style list cup success four land factor baby church.
-50,70,Hamstring Strain,Severe,2022-05-21,Recovered,Create not development take media later court.
-51,81,Shoulder Dislocation,Mild,2022-07-05,Cleared,Simply significant group method draw industry price surface.
-52,13,ACL Tear,Moderate,2022-12-07,Under Treatment,Interesting treat detail when central window three thank.
-53,4,Hamstring Strain,Moderate,2022-04-25,Under Treatment,Question product talk rise amount part discover travel.
-54,46,Muscle Fatigue,Moderate,2022-10-26,Recovered,Though customer world expert father home population local end record however language author when.
-55,68,Shin Splints,Severe,2023-01-04,Recovered,Difficult music join down course arrive speech left.
-56,23,ACL Tear,Severe,2024-02-23,Recovered,Religious street pretty writer reach claim friend sure.
-57,64,Lower Back Pain,Mild,2023-04-21,Cleared,Alone relationship source center customer network give kitchen should soldier purpose customer.
-58,82,Shoulder Dislocation,Moderate,2023-06-07,Recovering,Character near education teach value form leader new statement however citizen indicate their production since.
-59,60,Shoulder Dislocation,Severe,2022-11-20,Recovering,As oil move eight base dream almost big take out.
-60,57,Muscle Fatigue,Severe,2023-09-05,Cleared,There while way make authority happy worry describe personal message religious down person remember child.
-61,89,Shoulder Dislocation,Moderate,2023-09-11,Recovered,Picture my form control especially wonder much decide agree program my.
-62,50,Concussion,Mild,2023-05-01,Cleared,Heart point pull away act force grow pretty meeting speak.
-63,74,Muscle Fatigue,Severe,2023-08-29,Under Treatment,Seek behavior factor lead rest only that option resource large north fight face recognize place.
-64,3,Shin Splints,Moderate,2022-01-17,Recovering,Decide floor paper ready field forward field law far.
-65,78,Concussion,Moderate,2023-04-17,Under Treatment,Suffer more take reveal region job apply ball billion direction way.
-66,29,Ankle Sprain,Severe,2023-05-29,Recovered,Religious wife next answer enter however as however government find film watch perform hospital management.
-67,81,ACL Tear,Severe,2022-03-22,Under Treatment,Realize feel fear nearly would key present family natural support growth outside especially.
-68,57,Hamstring Strain,Severe,2024-01-18,Recovered,Run pull however light thousand standard once cut see total movie appear after back group.
-69,12,Shoulder Dislocation,Moderate,2024-04-30,Recovered,Author part action serve need health wear wife task foot represent but everybody.
-70,26,Knee Sprain,Severe,2024-01-20,Under Treatment,Blue American attorney just former take same.
-71,22,Shoulder Dislocation,Moderate,2023-08-28,Under Treatment,Drug institution apply chance house seat close market bring.
-72,15,Concussion,Mild,2022-10-16,Recovered,Contain probably ability way if same success around traditional imagine.
-73,87,Shin Splints,Severe,2024-01-20,Recovering,Bill return man behind city deal serious law score cold get manage bar.
-74,51,Hamstring Strain,Moderate,2022-09-11,Cleared,Blue decide popular girl show data hair great yeah reduce thank teacher after these interest.
-75,48,Shoulder Dislocation,Severe,2024-02-20,Under Treatment,Several word house most modern real reality detail approach force possible send sense manager.
-76,14,Ankle Sprain,Moderate,2022-02-21,Under Treatment,Drug present me evidence then conference three.
-77,79,Ankle Sprain,Severe,2022-05-10,Cleared,Expert three write population against summer begin else.
-78,90,Shoulder Dislocation,Severe,2024-04-16,Recovering,Nothing office beyond middle public than word good style discussion writer pull.
-79,18,Hamstring Strain,Mild,2023-09-16,Cleared,Near create walk somebody American statement left.
-80,15,ACL Tear,Mild,2022-10-05,Cleared,Probably part company information me much represent power want base goal others enjoy seem meeting push.
+injury_id,athlete_id,injury_type,severity,date_occurred,recovery_status,notes
+1,90,Knee Sprain,severe,2024-10-02,ongoing,American good benefit special tend trouble stay like save best turn seat.
+2,2,Lower Back Pain,moderate,2024-08-19,recovered,Open health teach guess various determine watch nature raise training more evidence plant.
+3,57,Muscle Fatigue,mild,2022-04-16,recovered,Almost sing pay full black morning top worker last prevent month third pick.
+4,62,ACL Tear,mild,2024-03-31,recovered,If skill use national energy almost nothing responsibility source rest.
+5,10,Lower Back Pain,severe,2022-04-20,ongoing,Case never ground smile recent industry surface adult management agency bill cost look process him.
+6,20,Lower Back Pain,moderate,2022-06-24,ongoing,Seven card beyond tonight everything opportunity voice.
+7,16,Groin Strain,moderate,2023-04-08,chronic,Quality especially factor sure learn turn final billion food put radio Mr wife reflect still.
+8,49,Concussion,moderate,2023-09-01,chronic,Listen to administration discussion listen economy pressure sure itself before analysis record tend light remember human.
+9,55,Shoulder Dislocation,severe,2022-05-04,chronic,Increase in trip team someone send wear character quality somebody company arrive certainly military me whole.
+10,95,ACL Tear,mild,2023-03-09,recovered,Third store total factor political boy or investment key or Mr car seven move.
+11,85,ACL Tear,mild,2023-05-07,ongoing,Remember fact ability minute take sure raise candidate technology board area really first big push.
+12,71,ACL Tear,mild,2022-01-06,recovered,Hear of particularly data west at reality start including nearly break.
+13,58,Lower Back Pain,moderate,2023-08-20,ongoing,Season heavy a debate class husband show low film American pull.
+14,30,Shoulder Dislocation,severe,2023-08-03,chronic,Gun opportunity whose big above we detail ability process truth still fight side.
+15,59,ACL Tear,severe,2023-04-24,recovered,Rock about realize respond western truth service organization wide market.
+16,81,Lower Back Pain,severe,2023-02-10,recovered,Challenge along edge establish like animal begin health drive show.
+17,15,Groin Strain,mild,2022-11-02,recovered,Price expert ahead believe season just not forward including authority thought leave eye certain.
+18,19,ACL Tear,mild,2022-12-06,recovered,Others along include expect window participant nice hospital most could people color agency.
+19,77,Lower Back Pain,moderate,2024-06-18,ongoing,Back assume safe similar hope federal wind accept cold check.
+20,60,Shoulder Dislocation,severe,2024-04-04,recovered,Involve economic near hair front name can opportunity mind within food bring agent.
+21,65,Groin Strain,moderate,2024-06-15,ongoing,Common theory nothing because two radio body understand general however.
+22,77,Hamstring Strain,moderate,2023-10-23,chronic,Son us change education key old interesting fast deal.
+23,33,Hamstring Strain,mild,2023-04-14,chronic,Might everybody collection but put employee miss race from hot what.
+24,74,Lower Back Pain,mild,2023-07-06,chronic,Close event notice teach house risk too choice Congress contain subject someone.
+25,6,Knee Sprain,moderate,2024-11-28,chronic,By federal despite among hotel finally phone office much early deal sort different final.
+26,57,Shoulder Dislocation,mild,2024-06-11,chronic,Whatever shoulder road table make money seven clearly police fast company reality take also event.
+27,63,ACL Tear,moderate,2023-12-14,recovered,Rather crime thought single sea relationship degree less hundred thus unit design fast try marriage if.
+28,43,Muscle Fatigue,severe,2022-08-03,ongoing,Office floor on receive order behavior land quickly require idea.
+29,43,Shin Splints,severe,2024-10-11,recovered,Personal live each start husband look once owner month hundred could game fear around health.
+30,85,Shin Splints,severe,2022-03-17,recovered,Next want value respond year including sport visit science test worker happen door dinner speech else.
+31,12,Muscle Fatigue,moderate,2023-10-25,ongoing,Administration doctor many white develop some right fear thousand agency ever treat market daughter push PM.
+32,99,Shin Splints,severe,2022-01-03,chronic,Trouble speak food bar economic see hotel type trade myself must.
+33,70,Concussion,moderate,2022-04-22,ongoing,Five dream sport low guess toward side.
+34,67,Muscle Fatigue,severe,2024-10-17,chronic,Herself goal environmental citizen environment physical glass stop deal.
+35,57,Hamstring Strain,mild,2023-07-01,chronic,Natural season page door before film model action part.
+36,17,Shoulder Dislocation,moderate,2024-09-19,ongoing,Cost various air toward prepare child student movement seek.
+37,4,Lower Back Pain,mild,2022-11-21,recovered,Born charge skin might mission white sort front could fast.
+38,71,Hamstring Strain,severe,2024-04-15,ongoing,Thus much voice law order close may education style unit include sometimes until board him base.
+39,29,ACL Tear,moderate,2022-08-29,chronic,Seem shake believe can realize level since involve view wonder husband election value attention although.
+40,20,Concussion,severe,2023-08-21,chronic,Last machine use enter support nearly some each meeting deal go.
+41,91,Shoulder Dislocation,moderate,2024-09-15,recovered,Political face attorney view road place its theory visit join measure year check sound team.
+42,32,Concussion,severe,2022-10-24,recovered,Past second official fall there later above.
+43,25,Lower Back Pain,severe,2022-10-07,ongoing,Star interest item despite fill young try street change.
+44,36,Shin Splints,moderate,2024-11-05,recovered,Admit himself until fund protect marriage sell its them brother truth bag particular seat billion.
+45,1,Shoulder Dislocation,severe,2023-09-04,chronic,Couple grow station weight those shake too smile however can across dinner assume.
+46,75,Concussion,mild,2024-07-03,chronic,Although after time event great sign common.
+47,62,Muscle Fatigue,moderate,2024-02-12,recovered,Half rather decision people image include case bring central movement table analysis while garden feeling.
+48,42,Ankle Sprain,severe,2023-05-05,chronic,Before rather white data manager use remember quality ok.
+49,50,Ankle Sprain,moderate,2022-03-31,recovered,Explain minute go friend get body exactly reach inside.
+50,96,Concussion,severe,2024-02-20,recovered,Few serve here result I statement through seven serious machine cold successful economic even marriage quite.
+51,85,Knee Sprain,moderate,2022-03-17,ongoing,Travel hot create nation number white happen very fall apply main sing none three miss defense.
+52,65,Lower Back Pain,moderate,2022-07-25,recovered,Better nature page media defense money scientist film first perform various.
+53,13,Groin Strain,moderate,2022-02-01,chronic,Plant seek partner up history call tonight computer big become rich vote above since.
+54,19,Shin Splints,severe,2022-11-13,ongoing,To real coach start subject form ok address.
+55,61,Shoulder Dislocation,moderate,2024-03-25,chronic,Anything ball daughter imagine phone fight live suffer against heavy hot agree add ready even.
+56,11,Muscle Fatigue,severe,2024-12-28,recovered,Explain popular indicate threat event itself think exist reflect.
+57,41,Concussion,severe,2022-03-15,chronic,Activity total eye hard eye position sure approach actually activity practice against school seven imagine.
+58,9,Ankle Sprain,severe,2023-08-12,ongoing,Learn stuff talk evening often relationship positive social news indicate effort Democrat news ever.
+59,96,ACL Tear,moderate,2022-07-21,chronic,Happen wall total off sing church both challenge discuss standard TV.
+60,91,ACL Tear,moderate,2022-12-07,chronic,Often believe draw happy lead address western church.
+61,39,Hamstring Strain,mild,2023-10-27,ongoing,Adult police reach record break traditional study contain make make rest part write key respond.
+62,38,Muscle Fatigue,moderate,2024-06-01,ongoing,Nor them mind local personal lawyer information stay through deep.
+63,32,Groin Strain,moderate,2023-01-04,ongoing,Idea hope bank expert music yard close federal public enough character car evidence.
+64,23,ACL Tear,severe,2024-02-23,chronic,Move another wrong seven my nor cut we together off modern.
+65,88,Ankle Sprain,moderate,2022-10-21,ongoing,Recently middle game economy move food protect wear trip about.
+66,60,Shoulder Dislocation,moderate,2023-06-07,chronic,Least ago another item high way investment admit.
+67,2,Concussion,moderate,2022-11-20,ongoing,Recognize assume interesting likely Republican professional already against wrong moment final opportunity may.
+68,57,Muscle Fatigue,severe,2023-09-05,chronic,Camera guess establish employee think top fish toward.
+69,55,Shoulder Dislocation,moderate,2023-09-11,ongoing,Machine seat night song space foot blue become between fact eye face.
+70,50,Concussion,mild,2023-05-01,recovered,Task whole three white poor soon its stay radio mother can raise to stage.
+71,74,Muscle Fatigue,severe,2023-08-29,chronic,Majority recognize top pressure in relationship no or herself.
+72,38,Hamstring Strain,severe,2024-03-21,recovered,If democratic range beyond type they institution modern.
+73,2,Lower Back Pain,severe,2022-04-11,chronic,Reveal large moment organization nature seem customer thousand chair drug hot health pretty rise.
+74,96,Concussion,moderate,2023-04-17,chronic,Arrive dream carry anyone whether something bill tax.
+75,46,Ankle Sprain,severe,2023-01-25,chronic,Arm country serious right former radio against law sign front least south laugh prove trade painting.
+76,33,Knee Sprain,severe,2022-07-18,chronic,Owner sit in successful decide rich occur wonder surface tree series stage.
+77,83,Hamstring Strain,moderate,2024-06-21,ongoing,Cover white life guy their instead child friend political medical morning party measure former town.
+78,75,Muscle Fatigue,severe,2022-09-27,ongoing,Lay all tax real beyond ground range form it.
+79,38,Muscle Fatigue,severe,2024-04-30,ongoing,Significant everything international in left work side.
+80,26,Knee Sprain,severe,2024-01-20,chronic,Development rock man memory behavior talk ever cultural challenge color herself her whole group blood prevent.

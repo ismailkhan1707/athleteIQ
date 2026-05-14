@@ -84,7 +84,7 @@ NATIONALITIES = [
     "Dutch", "Portuguese", "Italian", "Moroccan", "South Korean"
 ]
 
-STATUSES = ["active", "active", "active", "inactive", "suspended"]  # weighted toward active
+STATUSES = ["active", "active", "active", "inactive", "retired"]  # weighted toward active
 
 athletes = []
 for i in range(1, 101):
@@ -95,14 +95,14 @@ for i in range(1, 101):
         "date_of_birth": random_date(date(1995, 1, 1), date(2005, 12, 31)).isoformat(),
         "gender":       gender,
         "nationality":  random.choice(NATIONALITIES),
-        "contact":      fake.phone_number(),
+        "contact_info": fake.phone_number(),
         "status":       random.choice(STATUSES),
         "created_at":   fake.date_time_between(start_date="-3y", end_date="now").isoformat(),
     })
 
 athlete_ids = [a["athlete_id"] for a in athletes]
 write_csv("athletes.csv",
-          ["athlete_id", "full_name", "date_of_birth", "gender", "nationality", "contact", "status", "created_at"],
+          ["athlete_id", "full_name", "date_of_birth", "gender", "nationality", "contact_info", "status", "created_at"],
           athletes)
 
 
@@ -144,8 +144,8 @@ INJURY_TYPES = [
     "Shoulder Dislocation", "Muscle Fatigue", "Shin Splints",
     "Concussion", "Groin Strain", "Lower Back Pain"
 ]
-SEVERITIES       = ["Mild", "Moderate", "Severe"]
-RECOVERY_STATUSES = ["Recovering", "Recovered", "Under Treatment", "Cleared"]
+SEVERITIES        = ["mild", "moderate", "severe"]
+RECOVERY_STATUSES = ["ongoing", "recovered", "chronic"]
 
 injury_records = []
 for i in range(1, 81):
@@ -155,13 +155,13 @@ for i in range(1, 81):
         "athlete_id":      athlete_id,
         "injury_type":     random.choice(INJURY_TYPES),
         "severity":        random.choice(SEVERITIES),
-        "date_occured":    random_date(date(2022, 1, 1), date(2024, 12, 31)).isoformat(),
+        "date_occurred":   random_date(date(2022, 1, 1), date(2024, 12, 31)).isoformat(),
         "recovery_status": random.choice(RECOVERY_STATUSES),
         "notes":           fake.sentence(nb_words=12),
     })
 
 write_csv("injury_records.csv",
-          ["injury_id", "athlete_id", "injury_type", "severity", "date_occured", "recovery_status", "notes"],
+          ["injury_id", "athlete_id", "injury_type", "severity", "date_occurred", "recovery_status", "notes"],
           injury_records)
 
 

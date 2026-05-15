@@ -80,11 +80,10 @@ The system contains six core tables:
 ---
 
 ## 📅 Project Milestones
-| Milestone | Version | Status |
-| :--- | :--- | :--- |
-| Schema design + ERD/EER | v1.0 | ✅ Completed |
-| Normalization analysis (1NF–3NF) | v2.0 | ✅ Completed |
-| Dataflow documentation | v3.0 | ✅ Completed |
-| DDL scripts for full schema + indexes | v4.0 | ✅ Completed |
-| Population, DML operations, and validation scripts | v5.0 | ✅ Completed |
-| Synthetic data generation + output screenshots | v6.0 | ✅ Completed |
+| Milestones | Version | Date | Remarks |
+| :--- | :--- | :--- | :--- |
+| 1. Created Schema and Designed ERD | V 1.0 | 23/4/26 |  |
+| 2. Normalization and redundancy checks | V 1.1 | 12/5/26 |  |
+| 3. Generated synthetic data and Defined data flow | V 1.2 | 14/5/26 |  |
+| 4. DDL scripts implemented and EERD verified | V 1.3 | 14/5/26 |  |
+| 5. Data population and screenshots taken | V 1.4 | 15/5/26 |  |

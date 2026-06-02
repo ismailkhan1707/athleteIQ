@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ 'Edit Performance' if stat else 'Add Performance' }} - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit Performance Record' if stat else 'Add Performance Record' }}</h1>
+</div>
+
+<div class="card form-card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="athlete_id" class="form-label">Athlete</label>
+            <select id="athlete_id" name="athlete_id" class="form-input" required>
+                <option value="">Select Athlete</option>
+                {% for a in athletes %}
+                <option value="{{ a.athlete_id }}" {% if stat and stat.athlete_id == a.athlete_id %}selected{% endif %}>{{ a.full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sport_id" class="form-label">Sport</label>
+            <select id="sport_id" name="sport_id" class="form-input" required>
+                <option value="">Select Sport</option>
+                {% for s in sports %}
+                <option value="{{ s.sport_id }}" {% if stat and stat.sport_id == s.sport_id %}selected{% endif %}>{{ s.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="metric_name" class="form-label">Metric Name</label>
+            <input type="text" id="metric_name" name="metric_name" class="form-input" placeholder="e.g., Sprint Time, Jump Height" value="{{ stat.metric_name if stat else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="value" class="form-label">Value</label>
+            <input type="number" id="value" name="value" class="form-input" step="0.001" placeholder="Enter metric value" value="{{ stat.value if stat else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="recorded_on" class="form-label">Recorded On</label>
+            <input type="date" id="recorded_on" name="recorded_on" class="form-input" value="{{ stat.recorded_on.strftime('%Y-%m-%d') if stat and stat.recorded_on else '' }}" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ 'Update Record' if stat else 'Add Record' }}</button>
+            <a href="{{ url_for('performance_list') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

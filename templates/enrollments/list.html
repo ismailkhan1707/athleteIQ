@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Enrollments - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Enrollments</h1>
+</div>
+
+<!-- Add Enrollment Inline Form -->
+<div class="card" style="margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;">Add New Enrollment</h3>
+    <form method="POST" action="{{ url_for('enrollment_add') }}" class="inline-form">
+        <div class="form-group">
+            <label for="athlete_id" class="form-label">Athlete</label>
+            <select id="athlete_id" name="athlete_id" class="form-input" required>
+                <option value="">Select Athlete</option>
+                {% for a in athletes %}
+                <option value="{{ a.athlete_id }}">{{ a.full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sport_id" class="form-label">Sport</label>
+            <select id="sport_id" name="sport_id" class="form-input" required>
+                <option value="">Select Sport</option>
+                {% for s in sports %}
+                <option value="{{ s.sport_id }}">{{ s.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="enrolled_on" class="form-label">Enrollment Date</label>
+            <input type="date" id="enrolled_on" name="enrolled_on" class="form-input" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enroll</button>
+        </div>
+    </form>
+</div>
+
+<!-- Search -->
+<div class="filter-bar">
+    <form method="GET" action="{{ url_for('enrollments_list') }}" class="filter-form">
+        <input type="text" name="search" class="search-input table-search" placeholder="Search by ID, athlete, or sport name..." value="{{ search }}">
+        <button type="submit" class="btn btn-secondary">Search</button>
+        {% if search %}
+        <a href="{{ url_for('enrollments_list') }}" class="btn btn-sm btn-secondary">Clear</a>
+        {% endif %}
+    </form>
+</div>
+
+<!-- Enrollments Table -->
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Athlete Name</th>
+                    <th>Sport Name</th>
+                    <th>Enrolled On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in enrollments %}
+                <tr>
+                    <td>{{ e.athlete.full_name }}</td>
+                    <td>{{ e.sport.name }}</td>
+                    <td>{{ e.enrolled_on.strftime('%Y-%m-%d') if e.enrolled_on else 'N/A' }}</td>
+                    <td class="actions-cell">
+                        <form method="POST" action="{{ url_for('enrollment_delete') }}" style="display:inline;" data-confirm="Are you sure you want to delete this?">
+                            <input type="hidden" name="athlete_id" value="{{ e.athlete_id }}">
+                            <input type="hidden" name="sport_id" value="{{ e.sport_id }}">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="empty-state">No enrollments found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

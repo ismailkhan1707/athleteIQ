@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Injury Records - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Injury Records</h1>
+    <a href="{{ url_for('injury_add') }}" class="btn btn-primary">+ Add Injury</a>
+</div>
+
+<!-- Search -->
+<div class="filter-bar">
+    <form method="GET" action="{{ url_for('injuries_list') }}" class="filter-form">
+        <input type="text" name="search" class="search-input table-search" placeholder="Search by ID, athlete name, or injury type..." id="injurySearch" value="{{ search }}">
+        <button type="submit" class="btn btn-secondary">Search</button>
+        {% if search %}
+        <a href="{{ url_for('injuries_list') }}" class="btn btn-sm btn-secondary">Clear</a>
+        {% endif %}
+    </form>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Athlete</th>
+                    <th>Injury Type</th>
+                    <th>Severity</th>
+                    <th>Date Occurred</th>
+                    <th>Recovery Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for injury in injuries %}
+                <tr>
+                    <td>{{ injury.injury_id }}</td>
+                    <td>{{ injury.athlete.full_name }}</td>
+                    <td>{{ injury.injury_type }}</td>
+                    <td><span class="badge badge-{{ injury.severity }}">{{ injury.severity|capitalize }}</span></td>
+                    <td>{{ injury.date_occurred.strftime('%Y-%m-%d') if injury.date_occurred else 'N/A' }}</td>
+                    <td><span class="badge badge-{{ injury.recovery_status }}">{{ injury.recovery_status|capitalize }}</span></td>
+                    <td class="actions-cell">
+                        <a href="{{ url_for('injury_edit', id=injury.injury_id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        <form method="POST" action="{{ url_for('injury_delete', id=injury.injury_id) }}" style="display:inline;" data-confirm="Are you sure you want to delete this?">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" class="empty-state">No injury records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

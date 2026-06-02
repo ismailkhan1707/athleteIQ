@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Athletes - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Athletes</h1>
+    <a href="{{ url_for('athlete_add') }}" class="btn btn-primary">+ Add Athlete</a>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+    <form method="GET" action="{{ url_for('athletes_list') }}" class="filter-form">
+        <input type="text" name="search" class="search-input table-search" placeholder="Search by ID or name..." value="{{ search }}">
+        <select name="status" class="form-input" onchange="this.form.submit()">
+            <option value="" {% if not status %}selected{% endif %}>All Status</option>
+            <option value="active" {% if status == 'active' %}selected{% endif %}>Active</option>
+            <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
+            <option value="retired" {% if status == 'retired' %}selected{% endif %}>Retired</option>
+        </select>
+        <button type="submit" class="btn btn-secondary">Filter</button>
+    </form>
+</div>
+
+<!-- Athletes Table -->
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for athlete in athletes %}
+                <tr>
+                    <td>{{ athlete.athlete_id }}</td>
+                    <td><a href="{{ url_for('athlete_detail', id=athlete.athlete_id) }}" class="table-link">{{ athlete.full_name }}</a></td>
+                    <td>{{ athlete.date_of_birth.strftime('%Y-%m-%d') if athlete.date_of_birth else 'N/A' }}</td>
+                    <td>{{ athlete.gender }}</td>
+                    <td>{{ athlete.nationality }}</td>
+                    <td><span class="badge badge-{{ athlete.status }}">{{ athlete.status|capitalize }}</span></td>
+                    <td class="actions-cell">
+                        <a href="{{ url_for('athlete_edit', id=athlete.athlete_id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        <form method="POST" action="{{ url_for('athlete_delete', id=athlete.athlete_id) }}" style="display:inline;" data-confirm="Are you sure you want to delete this?">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7" class="empty-state">No athletes found. <a href="{{ url_for('athlete_add') }}">Add one now</a>.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

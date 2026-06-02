@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ 'Edit Athlete' if athlete else 'Add Athlete' }} - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit Athlete' if athlete else 'Add Athlete' }}</h1>
+</div>
+
+<div class="card form-card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="full_name" class="form-label">Full Name</label>
+            <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Enter athlete's full name" value="{{ athlete.full_name if athlete else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date_of_birth" class="form-label">Date of Birth</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" class="form-input" value="{{ athlete.date_of_birth.strftime('%Y-%m-%d') if athlete and athlete.date_of_birth else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" name="gender" class="form-input">
+                <option value="Male" {% if athlete and athlete.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if athlete and athlete.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if athlete and athlete.gender == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nationality" class="form-label">Nationality</label>
+            <input type="text" id="nationality" name="nationality" class="form-input" placeholder="Enter nationality" value="{{ athlete.nationality if athlete else '' }}">
+        </div>
+
+        <div class="form-group">
+            <label for="contact_info" class="form-label">Contact Info</label>
+            <textarea id="contact_info" name="contact_info" class="form-input" rows="3" placeholder="Enter contact information">{{ athlete.contact_info if athlete else '' }}</textarea>
+        </div>
+
+        {% if athlete %}
+        <div class="form-group">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" name="status" class="form-input">
+                <option value="active" {% if athlete.status == 'active' %}selected{% endif %}>Active</option>
+                <option value="inactive" {% if athlete.status == 'inactive' %}selected{% endif %}>Inactive</option>
+                <option value="retired" {% if athlete.status == 'retired' %}selected{% endif %}>Retired</option>
+            </select>
+        </div>
+        {% endif %}
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ 'Update Athlete' if athlete else 'Add Athlete' }}</button>
+            <a href="{{ url_for('athletes_list') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

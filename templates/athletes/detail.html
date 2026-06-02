@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ athlete.full_name }} - AthleteIQ{% endblock %}
+
+{% block content %}
+<!-- Profile Header -->
+<div class="profile-header">
+    <div class="profile-info">
+        <div class="profile-avatar">{{ athlete.full_name[0]|upper }}</div>
+        <div class="profile-details">
+            <h1>{{ athlete.full_name }}</h1>
+            <span class="badge badge-{{ athlete.status }}">{{ athlete.status|capitalize }}</span>
+        </div>
+    </div>
+    <div class="profile-meta">
+        <div class="meta-item">
+            <span class="meta-label">Nationality</span>
+            <span class="meta-value">{{ athlete.nationality or 'N/A' }}</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Gender</span>
+            <span class="meta-value">{{ athlete.gender or 'N/A' }}</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Date of Birth</span>
+            <span class="meta-value">{{ athlete.date_of_birth.strftime('%Y-%m-%d') if athlete.date_of_birth else 'N/A' }}</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Contact</span>
+            <span class="meta-value">{{ athlete.contact_info or 'N/A' }}</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Member Since</span>
+            <span class="meta-value">{{ athlete.created_at.strftime('%Y-%m-%d') if athlete.created_at else 'N/A' }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Tabs -->
+<div class="profile-tabs">
+    <button class="profile-tab active" data-tab="tab-enrollments">📋 Enrollments</button>
+    <button class="profile-tab" data-tab="tab-injuries">🏥 Injuries</button>
+    <button class="profile-tab" data-tab="tab-performance">📈 Performance</button>
+</div>
+
+<!-- Enrollments Tab -->
+<div class="tab-content active" id="tab-enrollments">
+    <div class="card">
+        <h3 style="margin-bottom: 1rem;">Enrolled Sports</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Sport Name</th>
+                        <th>Category</th>
+                        <th>Enrolled On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in enrollments %}
+                    <tr>
+                        <td>{{ e.sport.name }}</td>
+                        <td>{{ e.sport.category or 'N/A' }}</td>
+                        <td>{{ e.enrolled_on.strftime('%Y-%m-%d') if e.enrolled_on else 'N/A' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="empty-state">No enrollments found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Injuries Tab -->
+<div class="tab-content" id="tab-injuries">
+    <div class="card">
+        <h3 style="margin-bottom: 1rem;">Injury History</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Injury Type</th>
+                        <th>Severity</th>
+                        <th>Date</th>
+                        <th>Recovery</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inj in injuries %}
+                    <tr>
+                        <td>{{ inj.injury_type }}</td>
+                        <td><span class="badge badge-{{ inj.severity }}">{{ inj.severity|capitalize }}</span></td>
+                        <td>{{ inj.date_occurred.strftime('%Y-%m-%d') if inj.date_occurred else 'N/A' }}</td>
+                        <td><span class="badge badge-{{ inj.recovery_status }}">{{ inj.recovery_status|capitalize }}</span></td>
+                        <td>{{ inj.notes or '—' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="empty-state">No injury records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Performance Tab -->
+<div class="tab-content" id="tab-performance">
+    <div class="card">
+        <h3 style="margin-bottom: 1rem;">Performance Statistics</h3>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Sport</th>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Recorded On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in stats %}
+                    <tr>
+                        <td>{{ p.sport.name }}</td>
+                        <td>{{ p.metric_name }}</td>
+                        <td>{{ p.value }}</td>
+                        <td>{{ p.recorded_on.strftime('%Y-%m-%d') if p.recorded_on else 'N/A' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="empty-state">No performance records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Back Button -->
+<div style="margin-top: 1.5rem;">
+    <a href="{{ url_for('athletes_list') }}" class="btn btn-secondary">← Back to Athletes</a>
+</div>
+{% endblock %}

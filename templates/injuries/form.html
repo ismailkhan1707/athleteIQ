@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ 'Edit Injury' if injury else 'Add Injury' }} - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'Edit Injury Record' if injury else 'Add Injury Record' }}</h1>
+</div>
+
+<div class="card form-card">
+    <form method="POST">
+        <div class="form-group">
+            <label for="athlete_id" class="form-label">Athlete</label>
+            <select id="athlete_id" name="athlete_id" class="form-input" required>
+                <option value="">Select Athlete</option>
+                {% for a in athletes %}
+                <option value="{{ a.athlete_id }}" {% if injury and injury.athlete_id == a.athlete_id %}selected{% endif %}>{{ a.full_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="injury_type" class="form-label">Injury Type</label>
+            <input type="text" id="injury_type" name="injury_type" class="form-input" placeholder="e.g., ACL Tear, Concussion" value="{{ injury.injury_type if injury else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="severity" class="form-label">Severity</label>
+            <select id="severity" name="severity" class="form-input">
+                <option value="mild" {% if injury and injury.severity == 'mild' %}selected{% endif %}>Mild</option>
+                <option value="moderate" {% if injury and injury.severity == 'moderate' %}selected{% endif %}>Moderate</option>
+                <option value="severe" {% if injury and injury.severity == 'severe' %}selected{% endif %}>Severe</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date_occurred" class="form-label">Date Occurred</label>
+            <input type="date" id="date_occurred" name="date_occurred" class="form-input" value="{{ injury.date_occurred.strftime('%Y-%m-%d') if injury and injury.date_occurred else '' }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="recovery_status" class="form-label">Recovery Status</label>
+            <select id="recovery_status" name="recovery_status" class="form-input">
+                <option value="ongoing" {% if injury and injury.recovery_status == 'ongoing' %}selected{% endif %}>Ongoing</option>
+                <option value="recovered" {% if injury and injury.recovery_status == 'recovered' %}selected{% endif %}>Recovered</option>
+                <option value="chronic" {% if injury and injury.recovery_status == 'chronic' %}selected{% endif %}>Chronic</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea id="notes" name="notes" class="form-input" rows="3" placeholder="Additional notes about the injury">{{ injury.notes if injury else '' }}</textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{{ 'Update Record' if injury else 'Add Record' }}</button>
+            <a href="{{ url_for('injuries_list') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

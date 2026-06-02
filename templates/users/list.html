@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Users - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Users</h1>
+    <a href="{{ url_for('user_add') }}" class="btn btn-primary">+ Add User</a>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.user_id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') if user.created_at else 'N/A' }}</td>
+                    <td class="actions-cell">
+                        {% if user.user_id != current_user.user_id %}
+                        <form method="POST" action="{{ url_for('user_delete', id=user.user_id) }}" style="display:inline;" data-confirm="Are you sure you want to delete user '{{ user.username }}'?">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        {% else %}
+                        <span class="badge badge-active">You</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="empty-state">No users found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

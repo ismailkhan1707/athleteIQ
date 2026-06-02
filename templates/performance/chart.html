@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ metric }} - {{ athlete.full_name }} - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>Performance Trend</h1>
+        <p class="page-subtitle">{{ athlete.full_name }} &mdash; {{ sport.name }} &mdash; {{ metric }}</p>
+    </div>
+    <a href="{{ url_for('performance_list') }}" class="btn btn-secondary">&larr; Back to Performance</a>
+</div>
+
+<!-- Chart Card -->
+<div class="card" style="padding: 24px;">
+    <div class="chart-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+        <div>
+            <h3 style="margin: 0;">{{ metric }}</h3>
+            <p style="margin: 4px 0 0; color: var(--text-muted); font-size: 13px;">
+                {{ stats|length }} data point{{ 's' if stats|length != 1 else '' }} recorded
+            </p>
+        </div>
+        <!-- Legend -->
+        <div style="display: flex; gap: 20px; align-items: center; font-size: 13px;">
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 20px; height: 3px; background: #06b6d4; border-radius: 2px; display: inline-block;"></span>
+                <span style="color: var(--text-secondary);">Performance</span>
+            </span>
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 10px; height: 10px; background: #f43f5e; border-radius: 50%; display: inline-block; border: 2px solid #fff;"></span>
+                <span style="color: var(--text-secondary);">Injury</span>
+            </span>
+        </div>
+    </div>
+
+    <div style="position: relative; height: 420px;">
+        <canvas id="performanceTrendChart"
+                data-dates='{{ chart_dates }}'
+                data-values='{{ chart_values }}'
+                data-injuries='{{ injury_data }}'>
+        </canvas>
+    </div>
+</div>
+
+<!-- Data Table -->
+<div class="card" style="margin-top: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;">Raw Data</h3>
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in stats %}
+                <tr>
+                    <td>{{ s.recorded_on.strftime('%Y-%m-%d') if s.recorded_on else 'N/A' }}</td>
+                    <td>{{ s.value }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2" class="empty-state">No data points found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('performanceTrendChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    let dates, values, injuries;
+    try {
+        dates = JSON.parse(canvas.getAttribute('data-dates'));
+        values = JSON.parse(canvas.getAttribute('data-values'));
+        injuries = JSON.parse(canvas.getAttribute('data-injuries'));
+    } catch(e) {
+        console.warn('AthleteIQ: Could not parse chart data', e);
+        return;
+    }
+
+    // Severity colors for injury dots
+    const severityColors = {
+        'mild': '#f59e0b',
+        'moderate': '#f97316',
+        'severe': '#f43f5e'
+    };
+
+    // Build per-point styling: if a date has an injury, show a red dot
+    // Build a date->index lookup
+    const dateIndex = {};
+    dates.forEach(function(d, i) { dateIndex[d] = i; });
+
+    // For each performance point, check if there's an injury on that date
+    const pointColors = dates.map(function() { return '#06b6d4'; });
+    const pointBorders = dates.map(function() { return '#0a0e1a'; });
+    const pointSizes = dates.map(function() { return 5; });
+    const pointBorderWidths = dates.map(function() { return 2; });
+
+    // Map injuries to nearest performance data point
+    const injuryAtPoint = {};  // index -> array of injuries
+
+    injuries.forEach(function(inj) {
+        if (!inj.date) return;
+
+        // If exact date match, use it
+        if (dateIndex[inj.date] !== undefined) {
+            var idx = dateIndex[inj.date];
+            pointColors[idx] = severityColors[inj.severity] || '#f43f5e';
+            pointBorders[idx] = '#fff';
+            pointSizes[idx] = 9;
+            pointBorderWidths[idx] = 3;
+            if (!injuryAtPoint[idx]) injuryAtPoint[idx] = [];
+            injuryAtPoint[idx].push(inj);
+            return;
+        }
+
+        // Find closest date
+        var injDate = new Date(inj.date).getTime();
+        var closestIdx = -1;
+        var closestDist = Infinity;
+        dates.forEach(function(d, i) {
+            var dist = Math.abs(new Date(d).getTime() - injDate);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestIdx = i;
+            }
+        });
+
+        if (closestIdx >= 0) {
+            pointColors[closestIdx] = severityColors[inj.severity] || '#f43f5e';
+            pointBorders[closestIdx] = '#fff';
+            pointSizes[closestIdx] = 9;
+            pointBorderWidths[closestIdx] = 3;
+            if (!injuryAtPoint[closestIdx]) injuryAtPoint[closestIdx] = [];
+            injuryAtPoint[closestIdx].push(inj);
+        }
+    });
+
+    new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: '{{ metric }}',
+                data: values,
+                borderColor: '#06b6d4',
+                backgroundColor: 'rgba(6, 182, 212, 0.08)',
+                borderWidth: 2.5,
+                pointBackgroundColor: pointColors,
+                pointBorderColor: pointBorders,
+                pointBorderWidth: pointBorderWidths,
+                pointRadius: pointSizes,
+                pointHoverRadius: 10,
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            scales: {
+                x: {
+                    type: 'category',
+                    grid: { color: 'rgba(148, 163, 184, 0.08)' },
+                    ticks: {
+                        color: '#94a3b8',
+                        font: { family: "'Inter', sans-serif", size: 11 },
+                        maxRotation: 45
+                    },
+                    title: {
+                        display: true,
+                        text: 'Date',
+                        color: '#64748b',
+                        font: { family: "'Inter', sans-serif", size: 12, weight: '600' }
+                    }
+                },
+                y: {
+                    grid: { color: 'rgba(148, 163, 184, 0.08)' },
+                    ticks: {
+                        color: '#94a3b8',
+                        font: { family: "'Inter', sans-serif", size: 11 }
+                    },
+                    title: {
+                        display: true,
+                        text: '{{ metric }}',
+                        color: '#64748b',
+                        font: { family: "'Inter', sans-serif", size: 12, weight: '600' }
+                    }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                    titleColor: '#f1f5f9',
+                    bodyColor: '#94a3b8',
+                    borderColor: 'rgba(255,255,255,0.08)',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    padding: 12,
+                    titleFont: { family: "'Inter', sans-serif", weight: '600' },
+                    bodyFont: { family: "'Inter', sans-serif" },
+                    callbacks: {
+                        title: function(items) {
+                            return 'Date: ' + items[0].label;
+                        },
+                        label: function(item) {
+                            return '{{ metric }}: ' + item.formattedValue;
+                        },
+                        afterBody: function(items) {
+                            var idx = items[0].dataIndex;
+                            var lines = [];
+                            if (injuryAtPoint[idx]) {
+                                injuryAtPoint[idx].forEach(function(inj) {
+                                    lines.push('');
+                                    lines.push('INJURY: ' + inj.type);
+                                    lines.push('Severity: ' + inj.severity);
+                                    lines.push('Date: ' + inj.date);
+                                });
+                            }
+                            return lines;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

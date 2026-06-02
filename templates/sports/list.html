@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Sports - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Sports</h1>
+    <a href="{{ url_for('sport_add') }}" class="btn btn-primary">+ Add Sport</a>
+</div>
+
+<!-- Search -->
+<div class="filter-bar">
+    <form method="GET" action="{{ url_for('sports_list') }}" class="filter-form">
+        <input type="text" name="search" class="search-input table-search" placeholder="Search by ID or name..." value="{{ search }}">
+        <button type="submit" class="btn btn-secondary">Search</button>
+        {% if search %}
+        <a href="{{ url_for('sports_list') }}" class="btn btn-sm btn-secondary">Clear</a>
+        {% endif %}
+    </form>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sport in sports %}
+                <tr>
+                    <td>{{ sport.sport_id }}</td>
+                    <td>{{ sport.name }}</td>
+                    <td>{{ sport.category or 'N/A' }}</td>
+                    <td class="actions-cell">
+                        <a href="{{ url_for('sport_edit', id=sport.sport_id) }}" class="btn btn-sm btn-secondary">Edit</a>
+                        <form method="POST" action="{{ url_for('sport_delete', id=sport.sport_id) }}" style="display:inline;" data-confirm="Are you sure you want to delete this?">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="empty-state">No sports found. <a href="{{ url_for('sport_add') }}">Add one now</a>.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

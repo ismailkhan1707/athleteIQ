@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Add User - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Add New User</h1>
+    <a href="{{ url_for('users_list') }}" class="btn btn-secondary">&larr; Back to Users</a>
+</div>
+
+<div class="card" style="max-width: 560px;">
+    <form method="POST" action="{{ url_for('user_add') }}">
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-input" placeholder="Enter username" required>
+        </div>
+
+        <div style="margin-top: 12px; padding: 14px; border-radius: 8px; background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.2);">
+            <p style="margin: 0; color: var(--text-secondary); font-size: 13px;">
+                <strong style="color: var(--text-primary);">Note:</strong>
+                The password is automatically generated based on the system convention.
+                The new user can log in using their username with any password.
+            </p>
+        </div>
+
+        <div class="form-actions" style="margin-top: 24px;">
+            <button type="submit" class="btn btn-primary">Create User</button>
+            <a href="{{ url_for('users_list') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

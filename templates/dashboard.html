@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - AthleteIQ{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>Dashboard</h1>
+        <p class="page-subtitle">Welcome back, {{ current_user.username }}! Here's your overview.</p>
+    </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="grid grid-cols-5">
+    <div class="stat-card">
+        <div class="stat-icon">🏃</div>
+        <div class="stat-value counter" data-target="{{ total_athletes }}">0</div>
+        <div class="stat-label">Total Athletes</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value counter" data-target="{{ active_athletes }}">0</div>
+        <div class="stat-label">Active Athletes</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">🏅</div>
+        <div class="stat-value counter" data-target="{{ total_sports }}">0</div>
+        <div class="stat-label">Total Sports</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">🏥</div>
+        <div class="stat-value counter" data-target="{{ total_injuries }}">0</div>
+        <div class="stat-label">Injury Records</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-value counter" data-target="{{ total_performance }}">0</div>
+        <div class="stat-label">Performance Logs</div>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div class="grid grid-cols-3">
+    <div class="chart-container card">
+        <h3>Athletes by Nationality</h3>
+        <canvas id="nationalityChart" data-labels='{{ nationality_labels }}' data-values='{{ nationality_data }}'></canvas>
+    </div>
+    <div class="chart-container card">
+        <h3>Injury Severity</h3>
+        <canvas id="severityChart" data-labels='{{ severity_labels }}' data-values='{{ severity_data }}'></canvas>
+    </div>
+    <div class="chart-container card">
+        <h3>Athletes per Sport</h3>
+        <canvas id="sportChart" data-labels='{{ sport_labels }}' data-values='{{ sport_data }}'></canvas>
+    </div>
+</div>
+
+<!-- Recent Athletes -->
+<div class="card" style="margin-top: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;">Recent Athletes</h3>
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in recent_athletes %}
+                <tr>
+                    <td>{{ a.athlete_id }}</td>
+                    <td><a href="{{ url_for('athlete_detail', id=a.athlete_id) }}" class="table-link">{{ a.full_name }}</a></td>
+                    <td>{{ a.gender }}</td>
+                    <td>{{ a.nationality }}</td>
+                    <td><span class="badge badge-{{ a.status }}">{{ a.status|capitalize }}</span></td>
+                    <td>{{ a.created_at.strftime('%Y-%m-%d') if a.created_at else 'N/A' }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="empty-state">No athletes found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
